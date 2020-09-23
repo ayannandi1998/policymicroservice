@@ -45,7 +45,7 @@ namespace policymicroservice.Controllers
 
         // ambulance medical operation staying
         //    1         2        3         4      ----> for user
-        //    0         1         2        3      ----> as per my list
+        //    0         1        2         3      ----> as per my list
         public int getEligibleClaimAmount(int policyid,int memberid,int benefitid)
         {
             if (benefitid == 0)
