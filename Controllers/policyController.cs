@@ -14,6 +14,13 @@ namespace policymicroservice.Controllers
     [ApiController]
     public class policyController : ControllerBase
     {
+        readonly log4net.ILog _log4net;
+        
+        public policyController()
+        {
+           
+            _log4net = log4net.LogManager.GetLogger(typeof(policyController));
+        }
         // GET: api/<memberController>
         [HttpGet]
         public IActionResult Get()
@@ -31,6 +38,7 @@ namespace policymicroservice.Controllers
         [HttpGet("{policyid}/{memberid}")]
         public List<int> GetEligibleBenefits(int policyid, int memberid)//run in browser1 2 100 200 300 400
         {
+            _log4net.Info("policyController get eligible benefits");
             memberpolicyrepo o = new memberpolicyrepo();
             providerpolicyrepo res = new providerpolicyrepo();
             List<int> cob = new List<int>();
@@ -48,6 +56,7 @@ namespace policymicroservice.Controllers
         //    0         1        2         3      ----> as per my list
         public int getEligibleClaimAmount(int policyid,int memberid,int benefitid)
         {
+            _log4net.Info("policyController get eligible claim ammount");
             if (benefitid == 0)
             {
                 policyrepo x = new policyrepo();
